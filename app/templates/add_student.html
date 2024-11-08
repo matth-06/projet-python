@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Ajouter un Étudiant</title>
+</head>
+<body>
+    <h1>Ajouter un nouvel Étudiant</h1>
+    <form action="{{ url_for('add_student') }}" method="POST">
+        <label>ID Étudiant :</label><input type="text" name="student_id" required><br>
+        <label>Nom :</label><input type="text" name="name" required><br>
+        <label>Âge :</label><input type="number" name="age" required><br>
+        <button type="submit">Ajouter</button>
+    </form>
+    <a href="{{ url_for('index') }}">Retour</a>
+</body>
+</html>

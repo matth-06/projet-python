@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Gestion des Étudiants</title>
+</head>
+<body>
+    <h1>Liste des Étudiants</h1>
+    <a href="{{ url_for('add_student') }}">Ajouter un étudiant</a>
+    <ul>
+        {% for student in students %}
+            <li>
+                {{ student.name }} (ID: {{ student.student_id }}, Âge: {{ student.age }} ans, Moyenne: {{ student.calculate_average() | round(2) }})
+                <a href="{{ url_for('student_detail', student_id=student.student_id) }}">Voir / Ajouter une note</a>
+                <a href="{{ url_for('edit_student', student_id=student.student_id) }}">Modifier</a>
+                <a href="{{ url_for('delete_student', student_id=student.student_id) }}">Supprimer</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

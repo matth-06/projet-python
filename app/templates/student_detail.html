@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Détails de l'Étudiant</title>
+</head>
+<body>
+    <h1>Détails de l'Étudiant : {{ student.name }}</h1>
+    <p>ID : {{ student.student_id }}</p>
+    <p>Âge : {{ student.age }} ans</p>
+    <p>Moyenne : {{ student.calculate_average() | round(2) }}</p>
+    
+    <h2>Ajouter une Note</h2>
+    <form action="{{ url_for('student_detail', student_id=student.student_id) }}" method="POST">
+        <label>Note :</label><input type="number" name="grade" step="0.01" required><br>
+        <button type="submit">Ajouter la Note</button>
+    </form>
+    
+    <a href="{{ url_for('index') }}">Retour</a>
+</body>
+</html>
